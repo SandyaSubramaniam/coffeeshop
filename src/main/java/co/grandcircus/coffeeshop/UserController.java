@@ -1,5 +1,7 @@
 package co.grandcircus.coffeeshop;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,16 +25,17 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public ModelAndView registerUser(User user) {
+	public ModelAndView registerUser(User user, HttpSession session) {
 
-		System.out.println(user);
 		userDao.create(user);
-		return new ModelAndView("redirect:/users/complete");
+		session.setAttribute("user", user);
+		return new ModelAndView("complete");
 	}
 
-	@RequestMapping("/complete")
-	public ModelAndView display() {
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
 
-		return new ModelAndView("complete");
+		session.removeAttribute("user");
+		return new ModelAndView("redirect:/");
 	}
 }

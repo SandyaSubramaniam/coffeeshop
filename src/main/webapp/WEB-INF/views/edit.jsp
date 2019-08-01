@@ -9,22 +9,26 @@
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
-<title>User Registration Page</title>
+<title>Edit page</title>
 </head>
 <body style="padding: 10px;">
-	<h1>User Registration</h1>
-	<form method="post" action="/users/register">
+	<h1>${ title }</h1>
+	<form method="post">
+		<input type="hidden" name="id" value="${product.id}" />
 		<div class="form-group">
-			<label for="name">User Name</label> <input class="form-control"
-				id="name" name="username" required minlength="2" maxlength="15" />
+			<label for="name">Name</label>
+			<!-- pre-populate the input value from the existing food (if any) -->
+			<input class="form-control" id="name" name="name"
+				value="${product.name}" />
 		</div>
 		<div class="form-group">
-			<label for=email">Email</label> <input class="form-control"
-				id="email" name="email" />
+			<label for="description">Description</label> <input
+				class="form-control" id="description" name="description"
+				value="${product.description}" />
 		</div>
 		<div class="form-group">
-			<label for="password">Password</label> <input class="form-control"
-				id="password" name="password" type="password" />
+			<label for="price">Price</label> <input class="form-control"
+				id="price" name="price" value="${product.price}" />
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 		<a href="/products/admin" class="btn btn-light">Cancel</a>

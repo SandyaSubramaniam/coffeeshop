@@ -8,8 +8,8 @@
 </head>
 <body>
 <div align = "center">
-<h1>Thanks for registering!</h1>
-<a href="/">Products</a>
+<h1>Thanks for registering ${ user.getUsername() } !</h1>
+<h2><a href="/">Home</a></h2>	
 </div>
 </body>
 </html>

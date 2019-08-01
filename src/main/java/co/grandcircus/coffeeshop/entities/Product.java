@@ -1,8 +1,18 @@
 package co.grandcircus.coffeeshop.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "products")
 public class Product {
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	private String name;
 
@@ -15,21 +25,18 @@ public class Product {
 		super();
 	}
 
-	public Product(int id, String name, String description, double price) {
-
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-	}
-
+	/*
+	 * public Product(Integer id, String name, String description, double price) {
+	 * 
+	 * super(); this.id = id; this.name = name; this.description = description;
+	 * this.price = price; }
+	 */
 	public int getId() {
 
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 
 		this.id = id;
 	}
