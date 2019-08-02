@@ -32,6 +32,27 @@ public class UserController {
 		return new ModelAndView("complete");
 	}
 
+	@RequestMapping("/login")
+	public ModelAndView showLoginForm() {
+
+		return new ModelAndView("login");
+	}
+
+	@PostMapping("/login")
+	public ModelAndView submitLogin(User user, HttpSession session) {
+
+		// if not found, show the form again with error message
+		User existingUser = userDao.findByName(user.getUsername());
+		System.out.println(existingUser);
+		if (existingUser == null) {
+			return new ModelAndView("login", "message", "Incorrect username or password.");
+		} else {
+			// "login" just means adding the user to the session
+			session.setAttribute("user", user);
+			return new ModelAndView("redirect:/");
+		}
+	}
+
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
 
