@@ -13,14 +13,29 @@
 <title>Products Display Page</title>
 </head>
 <body>
-	<div class="container" style = "border:1px solid #CCC">
-		<h1 align="center">Grand Circus Cafe</h1>
-		<c:if test="${sessionScope.user!= null}">
-			<h2>
-				<c:out value="Welcome ${sessionScope.user.getUsername()}!" />
-			</h2>
-			<a href = "/users/logout" >It's not me</a>
-		</c:if>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1">
+				<a href="/products/admin" class="btn btn-secondary">Admin</a>
+			</div>
+			<div class="col-sm-7">
+				<h1>Grand Circus Cafe</h1>
+			</div>
+			<div class="col-sm-4" style="text-align: right">
+				<c:if test="${sessionScope.user!= null}">
+					<h5>
+						<c:out value="Welcome ${sessionScope.user.getUsername()}!" />
+						<a href="/users/logout">(Logout)</a>
+					</h5>
+				</c:if>
+				<c:if test="${sessionScope.user == null}">
+					<a href="/users/showForm" class="btn btn-secondary">Sign Up</a>
+					<a href="/users/login" class="btn btn-secondary">Log In</a>
+				</c:if>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="border: 1px solid #CCC">
 		<table class="table">
 			<thead>
 				<tr>
@@ -39,9 +54,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="/users/showForm" class="btn btn-secondary">Sign Up</a>
-		<a href="/users/login" class="btn btn-secondary">Log In</a>
-		<a href="/products/admin" class="btn btn-secondary">Admin</a>
 	</div>
 </body>
 </html>
