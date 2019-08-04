@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-1">
-				<a href="/products/admin" class="btn btn-secondary">Admin</a>
+				<a href="/users/login" class="btn btn-secondary">Admin</a>
 			</div>
 			<div class="col-sm-7">
 				<h1>Grand Circus Cafe</h1>
